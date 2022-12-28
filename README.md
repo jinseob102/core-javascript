@@ -6,7 +6,9 @@
 
 [instagram](https://www.instagram.com/_seovee/)
 
-- [ ] Code Structure
-- [ ] Variables
-- [ ] Static Mode
+- [x] Code Structure
+- [x] Variables
+- [x] Static Mode
+- [x] Global This
+- [x] Data Types
 
