@@ -33,9 +33,9 @@ console.log(num * 1);
 // numeric string
 let width = '320px';
 
-
-
 /* 데이터 → 불리언 ---------------------------------------------------------- */
 
 // null, undefined, 0, NaN, ''
 // 위에 나열한 것 이외의 것들
+
+const date = new Date()
