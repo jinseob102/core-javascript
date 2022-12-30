@@ -48,17 +48,14 @@ let whichTruthy = false || '' || [2,3].length ||{thisIsTruthy:true};
 
 
 
-let userName = prompt('아이디를 입력하세요', '힌트: 몰라용~');
+let userName = prompt('아이디를 입력하세요');
 
-if(userName === 'Admin'){  
+if(userName?.toLowerCase() === 'admin'){  
   let pw = prompt('비밀번호를 입력하세요', '8자리');
-
-  if(pw === 'TheMaster'){
+  if(pw?.toLowerCase() === 'themaster'){
     alert('환영합니다');
-
   }else{
     alert('인증에 실패하였습니다');
-
   }
 }else if(userName === "" || userName === null){
   alert('취소되었습니다.');
