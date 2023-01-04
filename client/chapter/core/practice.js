@@ -62,6 +62,43 @@
 //   };
 
 //^ 내준문제 범샘 풀이법(reduce 활용)
-  let repeatPow = (text, repeatCount) => Array(repeatCount).fill(null).reduce(acc => acc + text, '' )
+  // let repeatPow = (text, repeatCount) => Array(repeatCount).fill(null).reduce(acc => acc + text, '' )
 
-  console.log(repeatPow('안뇽🦈',200));
+  // console.log(repeatPow('안뇽🦈',200));
+
+
+  //& 28일차(수) 객체 마지막 문제
+  // let menu = {
+  //   width: 200,
+  //   height: 300,
+  //   title: "My menu"
+  // };
+
+  // function multiplyNumeric(obj) {
+  //   for (let key in obj) {
+  //     if (typeof obj[key] == 'number') {
+  //       obj[key] *= 2;
+  //     }
+  //   }
+  // }
+
+  // multiplyNumeric(menu);
+  // console.log(menu);
+
+  //& 참조에 의한 객체 복사 1
+  
+  //& 참조에 의한 객체 복사 2
+  
+  //& 참조에 의한 객체 복사 3
+  
+  //& 참조에 의한 객체 복사 4
+
+
+  프로퍼티의 순서!
+  1. 정수 프로퍼티 -> 작은 / 큰 순서부터 정렬
+  2. 정수가 아닌 프로퍼티는 -> _________순서로 정렬될까요?
+
+
+  
+
+
