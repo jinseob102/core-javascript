@@ -37,14 +37,31 @@
 // }
 
 // alert(pow(10, 100));
+//? 제곱하기 범샘식!!!
+//& let pow = (x, n) => Array(n)).fill(null).reduce(i => i * x, 1)
 
-function ask(question, yes, no) {
-  if (confirm(question)) yes()
-  else no();
-}
 
-ask(
-  "동의하십니까?",
-  function() { alert("동의하셨습니다."); },
-  function() { alert("취소 버튼을 누르셨습니다.");  }  
-)
+// function ask(question, yes, no) {
+//   if (confirm(question)) yes()
+//   else no();
+// }
+
+// ask(
+//   "동의하십니까?",
+//   function() { alert("동의하셨습니다."); },
+//   function() { alert("취소 버튼을 누르셨습니다.");  }  
+// )
+
+//& 범샘이 내준 문제
+// let repeat = (text, repeatCount) => {
+//     let result = '';
+//     for(let i = 0; i < repeatCount; i++){
+//       result += text;
+//     }
+//     return result;
+//   };
+
+//^ 내준문제 범샘 풀이법(reduce 활용)
+  let repeatPow = (text, repeatCount) => Array(repeatCount).fill(null).reduce(acc => acc + text, '' )
+
+  console.log(repeatPow('안뇽🦈',200));
