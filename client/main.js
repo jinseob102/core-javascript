@@ -40,15 +40,15 @@ function handler(e) {
   // console.log(firstValue, secondValue); 
   console.log(total);
 
-  //* 결과값 중복표시 되지 않으려고 하는 것!
+  //* 결과값 중복표시 되지 않으려고 하는 것!(미리 만듬)
   clearContent('.result')
 
-  //* 결과값 보여주는 것
+  //* 결과값 보여주는 것(미리 만든)
   insertLast('.result',total)
 }
 
 
-//^ 숫자가 변경되면 실시간으로 결과값이 반영되는 기능
+//^ 숫자가 변경되면 실시간으로 결과값이 반영되는 기능(추가 'change')--------------------------
 function inputHandler(){
   let firstValue = +getInputValue(firstInput); 
   let secondValue = +getInputValue(secondInput);
@@ -60,9 +60,10 @@ function inputHandler(){
   //* 결과값 보여주는 것
   insertLast('.result',total)
 }
+//^ -------------------------------------(추가)----------------------------------
 
 
-// done.addEventListener('click',handler) //나중엔 필요없는 부분
+// done.addEventListener('click',handler) //   밑에 두개 때문에 나중엔 필요없는 부분!
 
 firstInput.addEventListener('change',inputHandler)
 secondInput.addEventListener('change',inputHandler)
