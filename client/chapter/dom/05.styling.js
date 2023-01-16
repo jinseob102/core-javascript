@@ -86,15 +86,12 @@ console.log( size );
 
 
   // 
-setCss('.first','color','blue')  // red
+// setCss('.first','color','blue')  // red
 
 // - getComputedStyle(element, [pseudoElement]) `읽기 전용`
 
 
-
-
-
-
+console.log(size);
 
 
 
