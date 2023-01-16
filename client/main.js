@@ -32,11 +32,11 @@ let count = 0;
 let total = 0;
 
 
+
 //* 주사위값 기록하기 모두!-------------------------------------------
 function renderRecordListItem(){
   
   let diceValue = Number(attr('#cube', 'data-dice'));
-
   let template = /* html */`
     <tr>
       <td>${++count}</td>
@@ -45,9 +45,11 @@ function renderRecordListItem(){
     </tr>`
     
     
-    //* 이부분 아예 모르겠다...음 생각보다 쉬운데 한번 더 봐야겠는데?
+    //* 윗부분 아예 모르겠다...음 생각보다 쉬운데 한번 더 봐야겠는데?
 
   insertLast('.recordListWrapper tbody',template)
+  
+  //^ 값이 입력되면 스크롤 가장 아래쪽으로 내려가게 하는 것
   recordListWrapper.scrollTop = recordListWrapper.scrollHeight
 
 }
@@ -60,14 +62,14 @@ recordButton.addEventListener('click',renderRecordListItem)
 
 //^ 변수 보호를 위해 클로저로 만들 것 + IIEF패턴
 const handlerRollingDice = (() => {
-  
+    
     let stopAnimation;
     let isRolling = false;
     
     //^ 클로저를 위해서 리턴을 함수의 함수로 만들어 넣어줌
     return () => {
   
-    //^ 이 애니메이션은 범쌤이 미리 작업
+    //^ 이 애니메이션은 범쌤 작업하심
     if(!isRolling){
       stopAnimation = setInterval(diceAnimation,100)
 
@@ -82,15 +84,18 @@ const handlerRollingDice = (() => {
       enabledElement(resetButton);
       
     }  
-  
+    
+    //^ 이벤트가 계속 발생할 수 있게 하는 것
     isRolling = !isRolling;
     }
   
 })()
 
 
+
 const handlerRecord = () => {
 
+  //^ 기록 영역을 보이게 하는 것
   visibleElement(recordListWrapper)
 
 }
@@ -99,20 +104,22 @@ const handlerRecord = () => {
 const handlerReset = () => {
 
   invisibleElement(recordListWrapper);
+  //^ 값을 완전히 초기화 시키는 부분
   clearContents('.recordListWrapper tbody');
   count = 0;
   total = 0;
 }
 
 
+
+//* handlerRollingDice()의 ()를 쓰는 이유는 return을 실행이 될 수 있다. 클로져일땐 두번 실행해야댐!!!)
 //일반용
-//* handlerRollingDice()의 ()를 쓰는 이유는 return을 실행이 될 수 있다. 두번 실행해야댐!!!)
 // rollingDiceButton.addEventListener('click',handlerRollingDice())
 
 // IIEF패턴용
-rollingDiceButton.addEventListener('click',handlerRollingDice)
-recordButton.addEventListener('click',handlerRecord)
-resetButton.addEventListener('click',handlerReset)
+rollingDiceButton.addEventListener('click',handlerRollingDice) // 주사위 굴리기
+recordButton.addEventListener('click',handlerRecord) // 기록
+resetButton.addEventListener('click',handlerReset) // 초기화
 
 
 

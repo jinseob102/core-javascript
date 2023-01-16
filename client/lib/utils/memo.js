@@ -4,10 +4,9 @@
 
 
 
-//^ 메모이제이션 IIEF패턴으로 사용해서 만들었다.
-//^ 캐시하는것
-
-const memo = (() => {
+//* 메모이제이션 IIEF패턴으로 사용해서 만들었다.
+//* 캐시하는것
+export const memo = (() => {
   const cache = {}
 
   return (key, callback) => {
