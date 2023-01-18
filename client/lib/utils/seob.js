@@ -18,7 +18,7 @@ const defaultOptions = {
 //* ------------------------- fetch 실습 ------------ 
 
 //^ 너 어떻게 작동하니?
-const seob = async (options = {}) =>{
+export const seob = async (options = {}) =>{
 
   const {url, ...restOptions} = {
     ...defaultOptions,
@@ -29,7 +29,7 @@ const seob = async (options = {}) =>{
   }
 
   //^ url 뺀 나머지 항목들만 모아놓은 것!
-  console.log(restOptions);
+  // console.log(restOptions);
 
 
   let response = await fetch(url,restOptions)
@@ -43,8 +43,34 @@ const seob = async (options = {}) =>{
 }
 
 
-seob.get = (url) => {
-  seob({
+seob.get = async (url,options) => {
+  return seob({
+    url,
+    ...options
+  })
+}
+
+seob.post = (url,body,options) =>{
+  return seob({
+    method:'POST',
+    url,
+    body:JSON.stringify(body),
+    ...options
+  })
+}
+
+seob.put = (url,body,options) =>{
+  return seob({
+    method:'PUT',
+    url,
+    body:JSON.stringify(body),
+    ...options
+  })
+}
+
+seob.delete = (url,options) =>{
+  return seob({
+    method:'DELETE',
     url,
     ...options
   })

@@ -11,10 +11,12 @@
 
 import { typeError } from "../error/typeError.js";
 
-//! -----------------비동기 통신----------------
+
+
+
 //*---- xhrData 함수 만들기 method, url-------------------------------------
 
-//^ 애초에 들어오는 변수에 구조분해 할당 해주는 것!
+//^ 콜백방식 - 애초에 들어오는 변수에 구조분해 할당 해주는 것!
 export function xhrData({
   url = '',
   method = 'GET',
@@ -35,7 +37,7 @@ export function xhrData({
   xhr.open( method, url )                    //^ 구조분해 할당 후
 
   //^ 엔트리스로 헤더의 키 밸류가 반환된다.
-  console.log(Object.entries(headers));
+  // console.log(Object.entries(headers));
   /* 결과 (2) [Array(2), Array(2)]
           0: (2) ['Content-Type', 'application/json']
           1: (2) ['Access-Control-Allow-Origin', '*']
@@ -43,18 +45,14 @@ export function xhrData({
           [[Prototype]]: Array(0) */
 
   
-  //^ 이것의 목적은? ^ 키 밸류를 순환을 돌면서 넣어버리는 것!
+  //^ 이것의 목적은? - 키 밸류를 순환을 돌면서 넣어버리는 것!
   // Object.entries(headers).forEach(([key,value])=>{
-  //   //^ 헤더를 리퀘스트할때 셋팅하는 방법
+  //^ 헤더를 리퀘스트할때 셋팅하는 방법
   //   console.log(key, value);
-    /* 결과 Content-Type application/json
-          Access-Control-Allow-Origin * 
-    */
-
-    //^ 키, 값을 받아서 헤더를 리퀘스트 할 때 세팅하는 내장함수!
-  //   xhr.setRequestHeader(key,value);
-
-  // })
+  // 결과 Content-Type application/json
+  //     Access-Control-Allow-Origin * 
+  //^ 키, 값을 받아서 헤더를 리퀘스트 할 때 세팅하는 내장함수!
+  //   xhr.setRequestHeader(key,value);})
 
 
 
@@ -70,17 +68,15 @@ export function xhrData({
         //^ 아래 선언해준 곳으로 파라미터가 전달이 된다.
         onSuccess(JSON.parse(response));
         
-        //^ JSON팔스를 이용해 문자열 -> 객체화 후, 콘솔내용을 보여준다.
-        console.log();
       }
     }else{
-
-        onFail('통신 실패');
+      // console.error();
+      onFail('통신 실패');
     }
   })
   
   // 서버의 요청 + POST내용도 이때 같이 보낸다
-  //^ 객체를 문자열로 바꺼서 보낸다.
+    //^ 객체를 문자열로 바꺼서 보낸다.
     xhr.send(JSON.stringify(body));
   }
   //*----------------------------------------------------------
@@ -123,6 +119,7 @@ xhrData.post = (url,body,onSuccess,onFail) => {
 xhrData.put = (url,body,onSuccess,onFail) => {
   xhrData({
     method: 'PUT',
+    body,
     url,
     onSuccess,
     onFail
@@ -238,6 +235,7 @@ export function xhrPromise(options = {}){
   xhr.send(body ? JSON.stringify(body) : null)
 
   return new Promise((resolve, reject) => {
+
     xhr.addEventListener('readystatechange',()=>{
       const {status, readyState, response} = xhr;
 
@@ -294,7 +292,6 @@ xhrPromise.put = (url,body) => {
 xhrPromise.delete = (url) => {
   return xhrPromise({
     url,
-    body,
     method: 'DELETE'
   })
 }
