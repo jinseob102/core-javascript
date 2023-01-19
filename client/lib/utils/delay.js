@@ -55,7 +55,7 @@ export function delayP(options = {}){
       // }else {
       //   reject(errorMessage);
       // }
-      !shouldReject ? resolce(data) : reject(errorMessage);
+      !shouldReject ? resolve(data) : reject(errorMessage);
   }, timeout);
   });
 }

@@ -7,7 +7,7 @@ const defaultOptions = {
   cache: 'no-cache',
   credential: 'same-origin',
   redirect:'follow',
-  referrerPolicy:'no-reffere',
+  referrerPolicy:'no-referrer',
   headers:{
     'Content-Type':'application/json; charset=UTF-8'
   }
@@ -25,12 +25,10 @@ export const seob = async (options = {}) =>{
     ...options,
     //^ 헤더에도 새로운 합성을 주는 것!
     headers: {...defaultOptions.headers, ...options.headers}
-
   }
 
   //^ url 뺀 나머지 항목들만 모아놓은 것!
   // console.log(restOptions);
-
 
   let response = await fetch(url,restOptions)
 
@@ -41,6 +39,10 @@ export const seob = async (options = {}) =>{
 
   return response;
 }
+
+//* ------------------------------------------------------
+
+
 
 
 seob.get = async (url,options) => {
