@@ -20,7 +20,7 @@ function delay(callback,timeout = 1000){
 
 // 초기값
 const defaultOptions = {
-  shouldRefect: false,
+  shouldReject: false,
   timeout: 1000,
   data: '성공',
   errorMessage: '알 수 없는 오류가 발생했습니다.'
@@ -33,20 +33,20 @@ export function delayP(options = {}){
   //^ 얕은 복사한것(기본값 변형이 없도록 하는 것) => 기본을 깐다
   let config = {...defaultOptions};
 
-
-
   if(isNumber(options)){
     config.timeout = options;
   }
-
 
   if(isObject(options)){
   //^ 객체 합성 mixin => 디폴트 값이랑 새로운 값이랑 대체를 해야한다.
   config = {...config, ...options};
   }
+
+
+
+  //^ shouldReject?
   const {shouldReject,data,errorMessage,timeout} = config;
 
-  
   return new Promise((resolve, reject) => {
 
     setTimeout(()=> {
@@ -60,10 +60,11 @@ export function delayP(options = {}){
   });
 }
 
-
-// delayP(3000).then((res)=>{
+// delayP(true).then((res)=>{
 //   console.log(res);
 // });
+
+
 
 
 
@@ -73,6 +74,9 @@ export function delayP(options = {}){
 // delayP()
 // .then((res)=>{console.log(res)})        // 더 줄여서 쓸 수 있음 그것은 연구해봐!
 // .catch((err)=>{console.log(err)})       // 더 줄여서 쓸 수 있음 그것은 연구해봐!
+
+
+
 
 
 // //^ 간단한 애니메이션
@@ -89,6 +93,9 @@ export function delayP(options = {}){
 // .then(()=>{
 //   first.style.top = '0px';
 // })
+
+
+
 
 
 

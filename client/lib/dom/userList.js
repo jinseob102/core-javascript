@@ -9,7 +9,8 @@ import { insertBefore, insertLast } from './insert.js';
 // 함수로 만들어주는 것은 매개변수로 받아 쉽게 변경해서 리턴하려고!
 
 // const createUserCard = (user) =>{    // 일반적인 함수 명명
-export const createUserCard = ({   
+//^ 유저카드 만드는 함수
+const createUserCard = ({   
 // 기본값 + 구조분해할당 하기위해 이렇게 한다! 많이 사용되지 않는다.
   id = '',
   name = '',
@@ -45,7 +46,7 @@ export const createUserCard = ({
 // website:'https://seovee.com'
 // }) );
 
-
+//^ 스피너 사이트에서 가져온 것을 활용해 생성
 const createSpinner = (size = 100, loadingMessage = '유저 정보를 가져오는중..') => {
   return /* html */`
   <figure class="loadingSpinner">
@@ -73,8 +74,7 @@ const createSpinner = (size = 100, loadingMessage = '유저 정보를 가져오�
   </figure>
   `
 }
-
-
+//^ 빈화면 이미지 생성
 const createEmptyCard = (size = 200, emptyMessage = '표시할 데이터가 존재하지 않습니다🤔') => {
   return /* html */`
   <figure class="empty-user-card">
@@ -119,17 +119,24 @@ const createEmptyCard = (size = 200, emptyMessage = '표시할 데이터가 존�
 }
 
 
-//* 바로 인설트 해주는 함수 만든거임
+
+
+
+//* ---------- 아래는 렌더링 코드 ---------------------
+
+
+//^ 만든 유저카드를 페이지에 렌더링
 export const renderUserCard = (target,data) =>{
   insertLast(target, createUserCard(data))
 };
 
 
-//* 렌더스피너(로딩중)를 해주는 방법
+//^ 스피너(로딩중)를 페이지에 렌더링
 export const renderSpinner = (target) => {
   insertLast(target, createSpinner());
 }
 
+//^ 빈 페이지 렌더링
 export const renderEmptyCard = (target) => {
   insertLast(target, createEmptyCard());
 }

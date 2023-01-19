@@ -46,7 +46,7 @@ async function rendingUserList(){
     //^ userData의 모든 배열을 forEach로 나열해서 렌더링 바로 시키기
     //! 중요하고 재밋군?
     userData.forEach((data)=>{
-      console.log(data);
+      // console.log(data);
       //^ renderUserCard라는 모듈함수 만들어서 사용 한 것
       renderUserCard(userCardContainer,data)
     })
