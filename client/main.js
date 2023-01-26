@@ -1,3 +1,47 @@
+/* global gsock */
+
+//* 주접생성기 만들기 
+
+//^ 모듈파일 경로 잘 확인하기! 
+import { 
+  clearContents, 
+  getInputValue, 
+  getNode, 
+  getRandom, 
+  insertLast, 
+  typeError, 
+  isNumericString, 
+  showAlert, 
+  copy, 
+  removeClass,
+  addClass, } from './lib/index.js';
+
+import { jujeobData } from "./data/data.js";
+
+
+//^ 숫자가 포함된 문자열인지, 그냥 숫자만 포함되어 있는지 선별하는 함수--------
+//! 유틸함수로 이동!
+// function isNumericString(data){
+//   data = Number(data);
+//   return !isNaN(data)
+// }
+//^ -----------------------------------------------------------
+
+
+
+const submit = getNode('#submit')
+const result = getNode('.result')
+const resultArea = getNode('.result')
+
+
+//^ 콘솔 확인용
+console.log(submit);
+// console.log(getRandom(5));
+
+
+
+
+function clickSubmitHandler(e){
 //* ------------------계산기 만들기------------------------
 
 const firstInput = getNode("#firstNumber");
@@ -43,24 +87,10 @@ function handler(e) {
   //* 결과값 중복표시 되지 않으려고 하는 것!(미리 만듬)
   clearContent('.result')
 
-  //* 결과값 보여주는 것(미리 만든)
-  insertLast('.result',total)
-}
+console.log('hello~')
+console.log(window)
 
 
-//^ 숫자가 변경되면 실시간으로 결과값이 반영되는 기능(추가 'change')--------------------------
-function inputHandler(){
-  let firstValue = +getInputValue(firstInput); 
-  let secondValue = +getInputValue(secondInput);
-  let total = sum(firstValue,secondValue)
-
-  //* 결과값 중복표시 되지 않으려고 하는 것!
-  clearContent('.result')
-
-  //* 결과값 보여주는 것
-  insertLast('.result',total)
-}
-//^ -------------------------------------(추가)----------------------------------
 
 
 // done.addEventListener('click',handler) //   밑에 두개 때문에 나중엔 필요없는 부분!
