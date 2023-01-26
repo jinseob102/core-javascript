@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="./style.css" />
   <!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script> -->
 
-  
   <!-- <script src="./lib/dom/typeOf.js"></script> -->
   <script src="./lib/dom/getNode.js"></script>
   <script src="./lib/error/typeError.js"></script>
@@ -15,19 +14,35 @@
   <script src="./lib/dom/insert.js"></script>
   <script src="./lib/dom/css.js"></script>
 
+<<<<<<< HEAD
   
   
   <script defer src="./chapter/dom/05.styling.js"></script>
   
+=======
+  <script defer src="./main.js"></script>  
+>>>>>>> 03.calculator
   <title>javascript core</title>
 </head>
 <body>
-  <h1>
-    <span class="first">hello</span>
-    <!-- 주석이지롱 -->
-    <span class="second">world</span>
-  </h1>
+  <form class="calculator">
+    <div class="first">
+      <label for="firstNumber">First Value</label>
+      <input type="number" name="first" id="firstNumber" required/>
+    </div>
+    
+    <div class="operator"> 
+     +
+    </div>
+    
+    <div class="second">
+      <label for="secondNumber">Second Value</label>
+      <input type="number" name="second" id="secondNumber" required/>
+    </div>
+  
+    <input id="done" type="submit" value="done"/>
 
+<<<<<<< HEAD
 <!-- 
   <section class="visual">
     <div class="pop"></div>
@@ -39,6 +54,13 @@
   <div class="ground">
     <img src="https://en.js.cx/clipart/ball.svg" alt="축구공" class="ball" />
   </div> -->
+=======
+    <div class="result">
+      -
+    </div>
+
+  </form>
+>>>>>>> 03.calculator
 
 </body>
 </html>

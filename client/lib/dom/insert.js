@@ -14,6 +14,7 @@ function insertFirst(node, text) {
   node.insertAdjacentHTML('afterbegin', text);
 }
 
+//* 가장 많이 쓰는 듯!
 function insertLast(node, text) {
   if (typeof node === 'string') node = getNode(node);
   if (node.nodeType !== document.ELEMENT_NODE) {
