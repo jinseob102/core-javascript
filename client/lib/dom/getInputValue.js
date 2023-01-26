@@ -1,7 +1,6 @@
 import { getNode } from "./getNode.js";
 import { refError } from "../error/refError.js";
 
-//* 뭐하는 기능이었지?
 export function getInputValue(node) {
   if (typeof node === "string") node = getNode(node);
   if (node.tagName !== "INPUT")

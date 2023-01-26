@@ -1,5 +1,3 @@
-//* 메모이제이션 IIEF패턴으로 사용해서 만들었다.
-//* 캐시하는것
 export const memo = (() => {
   const cache = {};
 
@@ -13,10 +11,15 @@ export const memo = (() => {
 
     cache[key] = callback();
 
-    console.log(cache);
+    // console.log(cache);
   };
 })();
 
-memo("cube", () => document.querySelector("#cube"));
+memo("name", () => "tiger");
+// memo('name')
 
-console.log(memo("cube"));
+// console.log(memo('name',()=>'tttt'));
+
+// memo()('cube',()=> document.querySelector('#cube'));
+
+// console.log( memo()('cube') );
