@@ -119,7 +119,7 @@ function handler(e) {
 
   //* 결과값 중복표시 되지 않으려고 하는 것!(미리 만듬)
   clearContent('.result')
-
+}
 
 import { 
   diceAnimation, 
