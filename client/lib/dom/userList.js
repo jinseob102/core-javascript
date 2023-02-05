@@ -1,28 +1,21 @@
-
-import { insertBefore, insertLast } from './insert.js';
-
-
-
-
-
+import { insertBefore, insertLast } from "./insert.js";
 
 // 함수로 만들어주는 것은 매개변수로 받아 쉽게 변경해서 리턴하려고!
 
 // const createUserCard = (user) =>{    // 일반적인 함수 명명
 //^ 유저카드 만드는 함수
-const createUserCard = ({   
-// 기본값 + 구조분해할당 하기위해 이렇게 한다! 많이 사용되지 않는다.
-  id = '',
-  name = '',
-  email = '',
-  website = ''
-} = {}) =>{
-
+export const createUserCard = ({
+  // 기본값 + 구조분해할당 하기위해 이렇게 한다! 많이 사용되지 않는다.
+  id = "",
+  name = "",
+  email = "",
+  website = "",
+} = {}) => {
   //^ 우리는 객체구조분해할당을 배웠다. 이걸써라
   // const {id,name,email,website:site = '사이트'} = user
   //& ----- 객체 구조명명 변경 -> website:site로 해서 site로 쓸 수 있다!!!!!기억! 이름을 편하게 쓰려고 하는것임 -----
 
-  return /* html */`
+  return /* html */ `
   <section class="user-card-inner">
   <article class="user-card" data-index="user-${id}">
     <h3 class="user-name">${name}</h3>
@@ -36,8 +29,8 @@ const createUserCard = ({
     </div>
     <button class="delete">삭제</button>
   </article>
-  `
-}
+  `;
+};
 
 // console.log( createUserCard({
 //   id:1,
@@ -47,8 +40,11 @@ const createUserCard = ({
 // }) );
 
 //^ 스피너 사이트에서 가져온 것을 활용해 생성
-const createSpinner = (size = 100, loadingMessage = '유저 정보를 가져오는중..') => {
-  return /* html */`
+const createSpinner = (
+  size = 100,
+  loadingMessage = "유저 정보를 가져오는중.."
+) => {
+  return /* html */ `
   <figure class="loadingSpinner">
 
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#fff;display:block;" width="184px" height="184px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
@@ -72,11 +68,14 @@ const createSpinner = (size = 100, loadingMessage = '유저 정보를 가져오�
 
     <figcaption>${loadingMessage}</figcaption>
   </figure>
-  `
-}
+  `;
+};
 //^ 빈화면 이미지 생성
-const createEmptyCard = (size = 200, emptyMessage = '표시할 데이터가 존재하지 않습니다🤔') => {
-  return /* html */`
+const createEmptyCard = (
+  size = 200,
+  emptyMessage = "표시할 데이터가 존재하지 않습니다🤔"
+) => {
+  return /* html */ `
   <figure class="empty-user-card">
     <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M180 100C180 111.881 177.405 123.168 172.746 133.308C160.119 160.865 132.292 180 100 180C67.7081 180 39.8811 160.865 27.2541 133.308C22.5946 123.168 20 111.881 20 100C20 55.8162 55.8162 20 100 20C144.184 20 180 55.8162 180 100Z" fill="#F4F7FC"/>
@@ -115,36 +114,22 @@ const createEmptyCard = (size = 200, emptyMessage = '표시할 데이터가 존�
       
     <figcaption>${emptyMessage}</figcaption>
   </figure>
-  `
-}
-
-
-
-
+  `;
+};
 
 //* ---------- 아래는 렌더링 코드 ---------------------
 
-
 //^ 만든 유저카드를 페이지에 렌더링
-export const renderUserCard = (target,data) =>{
-  insertLast(target, createUserCard(data))
+export const renderUserCard = (target, data) => {
+  insertLast(target, createUserCard(data));
 };
-
 
 //^ 스피너(로딩중)를 페이지에 렌더링
 export const renderSpinner = (target) => {
   insertLast(target, createSpinner());
-}
+};
 
 //^ 빈 페이지 렌더링
 export const renderEmptyCard = (target) => {
   insertLast(target, createEmptyCard());
-}
-
-
-
-
-
-
-
-
+};
