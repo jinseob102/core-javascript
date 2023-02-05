@@ -1,12 +1,22 @@
-import { insertLast } from "./insert.js";
+import { insertBefore, insertLast } from "./insert.js";
 
-const createUserCard = ({
+// 함수로 만들어주는 것은 매개변수로 받아 쉽게 변경해서 리턴하려고!
+
+// const createUserCard = (user) =>{    // 일반적인 함수 명명
+//^ 유저카드 만드는 함수
+export const createUserCard = ({
+  // 기본값 + 구조분해할당 하기위해 이렇게 한다! 많이 사용되지 않는다.
   id = "",
   name = "",
   email = "",
   website = "",
 } = {}) => {
+  //^ 우리는 객체구조분해할당을 배웠다. 이걸써라
+  // const {id,name,email,website:site = '사이트'} = user
+  //& ----- 객체 구조명명 변경 -> website:site로 해서 site로 쓸 수 있다!!!!!기억! 이름을 편하게 쓰려고 하는것임 -----
+
   return /* html */ `
+  <section class="user-card-inner">
   <article class="user-card" data-index="user-${id}">
     <h3 class="user-name">${name}</h3>
     <div class="user-resouce-info">
@@ -22,6 +32,14 @@ const createUserCard = ({
   `;
 };
 
+// console.log( createUserCard({
+//   id:1,
+//   name:'seob',
+//   email:'jinseob@naver.com',
+// website:'https://seovee.com'
+// }) );
+
+//^ 스피너 사이트에서 가져온 것을 활용해 생성
 const createSpinner = (
   size = 100,
   loadingMessage = "유저 정보를 가져오는중.."
@@ -82,13 +100,12 @@ const createSpinner = (
 
     <figcaption>${loadingMessage}</figcaption>
   </figure>
-
   `;
 };
-
+//^ 빈화면 이미지 생성
 const createEmptyCard = (
   size = 200,
-  errorMessage = "표시할 데이터가 존재하지 않습니다 🤔"
+  emptyMessage = "표시할 데이터가 존재하지 않습니다🤔"
 ) => {
   return /* html */ `
   <figure class="empty-user-card">
@@ -132,6 +149,9 @@ const createEmptyCard = (
   `;
 };
 
+//* ---------- 아래는 렌더링 코드 ---------------------
+
+//^ 만든 유저카드를 페이지에 렌더링
 export const renderUserCard = (target, data) => {
   insertLast(target, createUserCard(data));
 };
